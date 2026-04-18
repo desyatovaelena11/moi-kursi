@@ -39,3 +39,8 @@ build/
 # Database backups
 *.sql
 backup/
+
+# Temporary deploy files
+*.tar.gz
+upload_ftp.py
+upload_ftp.sh
