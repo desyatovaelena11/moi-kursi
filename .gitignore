@@ -28,3 +28,14 @@ logs/
 .cache/
 dist/
 build/
+
+# Videos (large files - store separately)
+/videos/
+/uploads/
+*.mp4
+*.mov
+*.avi
+
+# Database backups
+*.sql
+backup/
