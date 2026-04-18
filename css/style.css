@@ -1,0 +1,524 @@
+/* ============================================
+   Moi-Kursi: Main Stylesheet
+   Light background, dark text, blue accents
+   ============================================ */
+
+:root {
+    --color-bg: #f5f5f5;
+    --color-text: #333;
+    --color-text-light: #666;
+    --color-primary: #0066cc;
+    --color-primary-light: #e6f0ff;
+    --color-primary-hover: #0052a3;
+    --color-secondary: #6c757d;
+    --color-border: #ddd;
+    --color-white: #fff;
+    --color-hover: #f0f0f0;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --border-radius: 8px;
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ============================================
+   Container & Layout
+   ============================================ */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+
+.header {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-lg);
+    box-shadow: var(--box-shadow);
+}
+
+.header-content {
+    text-align: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.tagline {
+    color: var(--color-text-light);
+    font-size: 14px;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+
+.main {
+    flex: 1;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.search-section {
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: 14px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.btn-clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    font-size: 18px;
+    padding: var(--spacing-sm);
+    transition: var(--transition);
+}
+
+.btn-clear:hover {
+    color: var(--color-text);
+}
+
+/* ============================================
+   Content Wrapper (Sidebar + Content)
+   ============================================ */
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-lg);
+    flex: 1;
+}
+
+/* ============================================
+   Sidebar
+   ============================================ */
+
+.sidebar {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--box-shadow);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.sidebar-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+}
+
+.courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.course-item {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+    background-color: transparent;
+}
+
+.course-item:hover {
+    background-color: var(--color-hover);
+    border-left-color: var(--color-primary);
+}
+
+.course-item.active {
+    background-color: var(--color-primary-light);
+    border-left-color: var(--color-primary);
+    font-weight: 600;
+}
+
+.course-item-name {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.course-item-count {
+    display: block;
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
+/* ============================================
+   Main Content Area
+   ============================================ */
+
+.content {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--box-shadow);
+    min-height: 400px;
+}
+
+.loading {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: var(--spacing-xl);
+    font-size: 16px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    color: var(--color-text-light);
+}
+
+.empty-icon {
+    font-size: 48px;
+    margin-bottom: var(--spacing-md);
+}
+
+/* ============================================
+   Breadcrumb
+   ============================================ */
+
+.breadcrumb {
+    display: flex;
+    gap: 8px;
+    margin-bottom: var(--spacing-md);
+    font-size: 13px;
+    color: var(--color-text-light);
+}
+
+.breadcrumb-item {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.breadcrumb-item:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: var(--color-border);
+}
+
+/* ============================================
+   Course & Lesson Info
+   ============================================ */
+
+.course-title,
+.lesson-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+}
+
+.course-description,
+.lesson-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+
+.sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.section {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.section:hover {
+    box-shadow: var(--box-shadow-lg);
+}
+
+.section-header {
+    background-color: var(--color-primary-light);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-header:hover {
+    background-color: #d9e9ff;
+}
+
+.section-name {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.section-toggle {
+    color: var(--color-primary);
+    font-size: 18px;
+    transition: var(--transition);
+}
+
+.section.collapsed .section-toggle {
+    transform: rotate(-90deg);
+}
+
+.lessons-list {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.lesson-item {
+    padding: var(--spacing-md);
+    border-left: 3px solid transparent;
+    background-color: var(--color-bg);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lesson-item:hover {
+    background-color: var(--color-hover);
+    border-left-color: var(--color-primary);
+    transform: translateX(4px);
+}
+
+.lesson-name {
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.lesson-duration {
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
+/* ============================================
+   Video Viewer
+   ============================================ */
+
+.video-container {
+    background-color: #000;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: var(--spacing-lg);
+}
+
+.video-player {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lesson-info {
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.footer {
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-lg);
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 12px;
+    margin-top: auto;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        max-height: 300px;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .course-title,
+    .lesson-title {
+        font-size: 20px;
+    }
+
+    .header {
+        padding: var(--spacing-md);
+    }
+
+    .main {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .search-input {
+        padding: var(--spacing-md);
+        font-size: 16px;
+    }
+
+    .sidebar,
+    .content {
+        padding: var(--spacing-md);
+    }
+
+    .course-title,
+    .lesson-title {
+        font-size: 18px;
+    }
+
+    .breadcrumb {
+        flex-wrap: wrap;
+    }
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-light);
+}
