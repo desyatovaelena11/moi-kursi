@@ -1,0 +1,20 @@
+# Включаем mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Базовый путь (замени на свой путь на Beget)
+    RewriteBase /api/v1/
+
+    # Если файл или папка существует, не переписываем
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Все запросы идут на index.php
+    RewriteRule ^(.*)$ index.php [L]
+</IfModule>
+
+# Защита от доступа к конфиг файлам
+<FilesMatch "^(config|src)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
