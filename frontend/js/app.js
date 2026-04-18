@@ -7,7 +7,7 @@
 // Configuration
 // ============================================
 
-const API_BASE = '/api/v1';  // Замени на URL своего Beget хостинга
+const API_BASE = 'https://155.212.139.51.nip.io/backend/api/v1';
 
 // ============================================
 // State Management
