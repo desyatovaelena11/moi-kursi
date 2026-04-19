@@ -16,17 +16,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Подключаем конфиг и классы
-require_once '../config/db.php';
-require_once '../src/Database.php';
+require_once __DIR__ . '/../config/db.php';
+
+// Проверяем что константы определены
+if (!defined('DB_HOST')) {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'moi_kursi_user');
+    define('DB_PASS', 'MoiKursi2026Secure!');
+    define('DB_NAME', 'moi_kursi_db');
+    define('DB_CHARSET', 'utf8mb4');
+}
+
+require_once __DIR__ . '/../src/Database.php';
 
 // Парсим URL
 $request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $request_method = $_SERVER['REQUEST_METHOD'];
 
-// Удаляем базовый путь API
-$base_path = '/api/v1';
-$route = str_replace($base_path, '', $request_uri);
-$route = ltrim($route, '/');
+// Проверяем параметр request от Nginx rewrite
+if (isset($_GET['request']) && !empty($_GET['request'])) {
+    $route = $_GET['request'];
+} else {
+    // Удаляем базовый путь API
+    $base_path = '/api/v1';
+    $route = str_replace($base_path, '', $request_uri);
+    $route = ltrim($route, '/');
+}
 
 // Роутер
 $routes = [
