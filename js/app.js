@@ -7,7 +7,7 @@
 // Configuration
 // ============================================
 
-const API_BASE = 'http://155.212.139.51/backend/api/v1';
+const API_BASE = 'https://155.212.139.51.nip.io/backend/api/v1';
 
 // ============================================
 // State Management
